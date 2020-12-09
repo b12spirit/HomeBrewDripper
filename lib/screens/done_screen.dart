@@ -30,10 +30,9 @@ class DoneScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Text('''enjoy your amazing 
-  handmade coffee''',
+              Text("enjoy your amazing\nhandmade coffee",
                   textAlign: TextAlign.center,
-                  key: Key("Donetxt"),
+                  key: Key("enjoy your amazing"),
                   style: GoogleFonts.montserrat(
                       textStyle: TextStyle(
                           color: Color(0xff4C748B),
@@ -43,14 +42,14 @@ class DoneScreen extends StatelessWidget {
           ),
         )),
         TextButton(
-          key: Key("Donebtn"),
           onPressed: () => {
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => RecipeSelectionScreen()),
             )
           },
-          child: Text('done',
+          child: Text("done",
+              key: Key("done"),
               style: GoogleFonts.montserrat(
                   textStyle: TextStyle(
                       color: Color(0xff4C748B),

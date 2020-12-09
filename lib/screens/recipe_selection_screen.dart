@@ -94,6 +94,7 @@ class RecipeList extends StatelessWidget {
               ListTile(
                 title: Text(
                   recipe.name,
+                  key: Key(recipe.name),
                   style: TextStyle(
                       fontFamily: "Montserrat",
                       color: Color(0xff4C748B),

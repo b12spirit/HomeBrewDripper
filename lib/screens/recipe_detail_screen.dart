@@ -79,6 +79,7 @@ class RecipeDetailScreen extends StatelessWidget {
                 color: Color(0xff4C748B),
                 child: new Text(
                   "Start",
+                  key: Key("start"),
                   style: TextStyle(
                       fontFamily: "Montserrat",
                       letterSpacing: 1.5,
