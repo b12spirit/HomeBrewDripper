@@ -80,6 +80,8 @@ class _RecipeStepsScreenState extends State<RecipeStepsScreen> {
           SizedBox(height: 50),
           ListTile(
             title: Text("$stepTimeRemaining",
+                //changed the capitalization to fit the tests
+                key: Key("current_time"),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                     fontFamily: "Kollektif",
@@ -89,7 +91,7 @@ class _RecipeStepsScreenState extends State<RecipeStepsScreen> {
           ),
           ListTile(
             title: Text("${currentRecipeStep.text}",
-                key: Key("Current_step"),
+                key: Key("current_step"),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                     fontFamily: "Kollektif",

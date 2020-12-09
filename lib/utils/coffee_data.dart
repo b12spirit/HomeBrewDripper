@@ -1,5 +1,6 @@
 import 'package:homebrew_dripper/models/coffee_recipe.dart';
 import 'package:homebrew_dripper/models/recipe_step.dart';
+import 'package:homebrew_dripper/utils/globals.dart' as globals;
 
 CoffeeRecipe makeSweetMariasRecipe() {
   List<RecipeStep> steps = [
@@ -74,13 +75,61 @@ CoffeeRecipe makePTsRecipe() {
   return recipe;
 }
 
-List<CoffeeRecipe> getAllRecipes() {
-  return [
-    makeSweetMariasRecipe(),
-    makeTexasCoffeeSchoolRecipe(),
-    makeHomeGroundsRecipe(),
-    makePTsRecipe(),
+//fake recipe 1 for integration test
+CoffeeRecipe makeFake1Recipe() {
+  List<RecipeStep> steps = [
+    RecipeStep("Add 10g water", 5),
+    RecipeStep("Cover and wait", 15),
+    RecipeStep("Gently stir", 7),
+    RecipeStep("Place atop mug and drain", 13),
   ];
+  CoffeeRecipe recipe = CoffeeRecipe(
+      "T e s t   R e c i p e 1",
+      23,
+      360,
+      "lightly-coarse ground coffee",
+      "The original recipe: makes one delicious cup",
+      steps);
+  return recipe;
+}
+
+//fake recipe 2 for integration test
+CoffeeRecipe makeFake2Recipe() {
+  List<RecipeStep> steps = [
+    RecipeStep("Add 240g water", 5),
+    RecipeStep("Cover and wait", 10),
+    RecipeStep("Gently stir", 5),
+    RecipeStep("Place atop of mug and drain", 15),
+  ];
+  CoffeeRecipe recipe = CoffeeRecipe(
+      "T e s t   R e c i p e 2",
+      25,
+      240,
+      "Finely ground coffee",
+      "The original recipe: makes one delicious cup",
+      steps);
+  return recipe;
+}
+
+// if statement used to check for whether or not we are testing,
+//displays the runned recipes under else
+//while if is the recipes that will be tested
+List<CoffeeRecipe> getAllRecipes() {
+  if (globals.isTesting) {
+    return [
+      makeSweetMariasRecipe(),
+      makePTsRecipe(),
+      makeFake1Recipe(),
+      makeFake2Recipe()
+    ];
+  } else {
+    return [
+      makeSweetMariasRecipe(),
+      makeTexasCoffeeSchoolRecipe(),
+      makeHomeGroundsRecipe(),
+      makePTsRecipe(),
+    ];
+  }
 }
 
 class CoffeeData {

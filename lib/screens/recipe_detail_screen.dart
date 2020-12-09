@@ -19,6 +19,8 @@ class RecipeDetailScreen extends StatelessWidget {
           backgroundColor: Color(0xffE5E5E5),
           elevation: 0,
           leading: IconButton(
+            //inputted back button for integration test
+            key: Key("Back_btn"),
             icon: Icon(
               Icons.arrow_back_ios,
               color: Color(0xff4C748B),
@@ -79,6 +81,7 @@ class RecipeDetailScreen extends StatelessWidget {
                 color: Color(0xff4C748B),
                 child: new Text(
                   "Start",
+                  key: Key("start"),
                   style: TextStyle(
                       fontFamily: "Montserrat",
                       letterSpacing: 1.5,

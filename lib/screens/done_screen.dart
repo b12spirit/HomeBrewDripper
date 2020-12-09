@@ -42,7 +42,8 @@ class DoneScreen extends StatelessWidget {
             ],
           ),
         )),
-        TextButton(
+        //My VS code isn't allowing for textbutton, but that's an easy fix when we merge, for now i changed it to flatbutton to test
+        FlatButton(
           key: Key("Donebtn"),
           onPressed: () => {
             Navigator.push(
