@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:homebrew_dripper/screens/recipe_selection_screen.dart';
 
-// ignore: must_be_immutable
 class DoneScreen extends StatelessWidget {
-  bool areWeInIntegrationTest;
-  DoneScreen(this.areWeInIntegrationTest);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,24 +42,20 @@ class DoneScreen extends StatelessWidget {
             ],
           ),
         )),
-        Padding(
-          padding: EdgeInsets.all(0),
-          child: FlatButton(
-            key: Key("Donebtn"),
-            child: Text('done',
-                style: GoogleFonts.montserrat(
-                    textStyle: TextStyle(
-                        color: Color(0xff4C748B),
-                        fontSize: 18,
-                        letterSpacing: 1.5))),
-            onPressed: () => {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => RecipeSelectionScreen()),
-              )
-            },
-          ),
+        TextButton(
+          key: Key("Donebtn"),
+          onPressed: () => {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => RecipeSelectionScreen()),
+            )
+          },
+          child: Text('done',
+              style: GoogleFonts.montserrat(
+                  textStyle: TextStyle(
+                      color: Color(0xff4C748B),
+                      fontSize: 18,
+                      letterSpacing: 1.5))),
         ),
       ])),
     );

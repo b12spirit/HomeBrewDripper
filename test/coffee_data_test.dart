@@ -1,42 +1,115 @@
-//Test that the load recipes gives you the data you expect
-//this should be dependent on the recipes that you actually want to have in the app
-
 import 'package:homebrew_dripper/models/coffee_recipe.dart';
 import 'package:homebrew_dripper/models/recipe_step.dart';
-import 'package:test/test.dart';
-import 'package:homebrew_dripper/utils/coffee_data.dart';
 
-void main() {
-  test('loadRecipes should give back the recipes in my app', () {
-    List<CoffeeRecipe> recipes = CoffeeData.loadRecipes();
+CoffeeRecipe makeSweetMariasRecipe() {
+  List<RecipeStep> steps = [
+    RecipeStep("Add 360g water", 5),
+    RecipeStep("Cover and wait", 12),
+    RecipeStep("Stir", 6),
+    RecipeStep("Cover and wait", 12),
+    RecipeStep("Stir", 6),
+  ];
+  CoffeeRecipe recipe = CoffeeRecipe(
+      "Sweet Maria's",
+      22,
+      360,
+      "finely ground coffee",
+      "The original recipe: makes one delicious cup",
+      steps);
+  return recipe;
+}
 
-    // add whatever tests help give you confidence
-    expect(recipes[0], isA<CoffeeRecipe>());
-    expect(recipes[0].name, "S w e e t   M a r i a ' s");
-    expect(recipes[0].steps, isA<List<RecipeStep>>());
-  });
-  test('loadRecipes should give back the recipes in my app', () {
-    List<CoffeeRecipe> recipes = CoffeeData.loadRecipes();
+// ignore: non_constant_identifier_names
+CoffeeRecipe makeTexasCoffeeSchoolRecipe() {
+  List<RecipeStep> steps = [
+    RecipeStep("Add 100g of water", 6),
+    RecipeStep("Gentle Stir", 8),
+    RecipeStep("Add 240g water", 7),
+    RecipeStep("Stir then cover", 6),
+    RecipeStep("Place a top mug and drain", 15),
+  ];
+  CoffeeRecipe recipe = CoffeeRecipe(
+      "Texas Coffee School",
+      24,
+      340,
+      "Coarse ground coffee",
+      "The original recipe: makes one delicious cup",
+      steps);
+  return recipe;
+}
 
-    // add whatever tests help give you confidence
-    expect(recipes[1], isA<CoffeeRecipe>());
-    expect(recipes[1].name, "R e c i p e   # 2");
-    expect(recipes[1].steps, isA<List<RecipeStep>>());
-  });
-  test('loadRecipes should give back the recipes in my app', () {
-    List<CoffeeRecipe> recipes = CoffeeData.loadRecipes();
+CoffeeRecipe makeHomeGroundsRecipe() {
+  List<RecipeStep> steps = [
+    RecipeStep("Add 50g water and wait", 10),
+    RecipeStep("Add 310g water", 6),
+    RecipeStep("Cover and wait", 10),
+    RecipeStep("Gently stir", 7),
+    RecipeStep("Place a top mug and drain", 15),
+  ];
+  CoffeeRecipe recipe = CoffeeRecipe(
+      "Home Grounds ",
+      23,
+      360,
+      "Medium-coarse ground coffee",
+      "The original recipe: makes one delicious cup",
+      steps);
+  return recipe;
+}
 
-    // add whatever tests help give you confidence
-    expect(recipes[2], isA<CoffeeRecipe>());
-    expect(recipes[2].name, "R e c i p e   # 3");
-    expect(recipes[2].steps, isA<List<RecipeStep>>());
-  });
-  test('loadRecipes should give back the recipes in my app', () {
-    List<CoffeeRecipe> recipes = CoffeeData.loadRecipes();
+CoffeeRecipe makePTsRecipe() {
+  List<RecipeStep> steps = [
+    RecipeStep("Add 50g water and wait", 10),
+    RecipeStep("wait", 10),
+    RecipeStep("Add 400g water", 8),
+    RecipeStep("Wait", 12),
+    RecipeStep("Place a top mug and drain", 12),
+  ];
+  CoffeeRecipe recipe = CoffeeRecipe(
+      "PTs",
+      25,
+      450,
+      "Medium-coarse ground coffee",
+      "The original recipe: makes one delicious cup",
+      steps);
+  return recipe;
+}
 
-    // add whatever tests help give you confidence
-    expect(recipes[3], isA<CoffeeRecipe>());
-    expect(recipes[3].name, "T e s t   R e c i p e");
-    expect(recipes[3].steps, isA<List<RecipeStep>>());
-  });
+List<CoffeeRecipe> getAllRecipes() {
+  return [
+    makeSweetMariasRecipe(),
+    makeTexasCoffeeSchoolRecipe(),
+    makeHomeGroundsRecipe(),
+    makePTsRecipe(),
+  ];
+}
+
+class CoffeeData {
+  static List<CoffeeRecipe> loadRecipes() {
+    return getAllRecipes();
+  }
+}
+
+String toMinuteFormat(int secondsInput) {
+  int min = secondsInput ~/ 60;
+  String smin = min.toString();
+  String ssecond = (secondsInput - min * 60).toString();
+
+  if (min <= 9) if (secondsInput % 60 <= 9)
+    return "0" + smin + ":0" + ssecond;
+  else
+    return "0" + smin + ":" + ssecond;
+  else if (secondsInput % 60 <= 9) {
+    if (secondsInput % 60 == 0) return smin + ":00";
+
+    return smin + ":0" + ssecond;
+  } else
+    return smin + ":" + ssecond;
+}
+
+String totalTime(CoffeeRecipe recip) {
+  int totaltime = 0;
+
+  for (RecipeStep step in recip.steps) totaltime += step.time;
+
+  return toMinuteFormat(totaltime);
 }
