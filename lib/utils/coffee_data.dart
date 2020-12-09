@@ -1,9 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:homebrew_dripper/models/coffee_recipe.dart';
 import 'package:homebrew_dripper/models/recipe_step.dart';
 
 CoffeeRecipe makeSweetMariasRecipe() {
   List<RecipeStep> steps = [
-    RecipeStep("Add 360g water", 5),
+    RecipeStep("Add 360g water", 6),
     RecipeStep("Cover and wait", 12),
     RecipeStep("Stir", 6),
     RecipeStep("Cover and wait", 12),
@@ -22,11 +23,11 @@ CoffeeRecipe makeSweetMariasRecipe() {
 // ignore: non_constant_identifier_names
 CoffeeRecipe makeTexasCoffeeSchoolRecipe() {
   List<RecipeStep> steps = [
-    RecipeStep("Add 100g of water", 6),
-    RecipeStep("Gentle Stir", 8),
-    RecipeStep("Add 240g water", 7),
-    RecipeStep("Stir then cover", 6),
-    RecipeStep("Place a top mug and drain", 15),
+    RecipeStep("Add 100g of water", 1),
+    RecipeStep("Gentle Stir", 1),
+    RecipeStep("Add 240g water", 1),
+    RecipeStep("Stir then cover", 1),
+    RecipeStep("Place a top mug and drain", 1),
   ];
   CoffeeRecipe recipe = CoffeeRecipe(
       "Texas Coffee School",
