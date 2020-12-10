@@ -61,7 +61,7 @@ CoffeeRecipe makePTsRecipe() {
   List<RecipeStep> steps = [
     RecipeStep("Add 50g water and wait", 10),
     RecipeStep("wait", 10),
-    RecipeStep("Add 400g water", 8),
+    RecipeStep("Add 400g
     RecipeStep("Wait", 12),
     RecipeStep("Place a top mug and drain", 12),
   ];
